@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carta Animada para Ivanna</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 3em;
+      background-color: #000;
+      font-family: 'Times New Roman', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #FFD700;
+      position: relative;
+    }
+
+    /* Animated golden glow around the card */
+    @keyframes glow {
+      0%, 100% {
+        box-shadow:
+          0 0 10px #ff69b4bb,
+          0 0 20px #FFD700cc,
+          0 0 30px #ff1493aa,
+          0 0 40px #FFD700dd;
+      }
+      50% {
+        box-shadow:
+          0 0 20px #ff69b4dd,
+          0 0 30px #FFD700ee,
+          0 0 45px #ff1493cc,
+          0 0 60px #FFD700ff;
+      }
+    }
+
+    /* The letter container ("sobre") */
+    .carta {
+      background: rgba(0,0,0,0.85);
+      border: 3px solid #ff69b4;
+      border-radius: 16px;
+      max-width: 900px;
+      padding: 3em 4em;
+      box-shadow:
+        0 0 10px #ff69b4,
+        inset 0 0 15px #ff69b4cc;
+      animation: glow 4s ease-in-out infinite;
+      position: relative;
+      z-index: 10;
+      opacity: 1;
+      animation-fill-mode: forwards;
+      animation-name: fadeIn;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out;
+      overflow-y: auto;
+      max-height: 90vh;
+      scrollbar-width: thin;
+      scrollbar-color: #ff69b4 #000;
+    }
+
+    .carta::-webkit-scrollbar {
+      width: 8px;
+    }
+    .carta::-webkit-scrollbar-track {
+      background: #000;
+    }
+    .carta::-webkit-scrollbar-thumb {
+      background-color: #ff69b4;
+      border-radius: 4px;
+      border: 2px solid #000;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+      color: #FFD700;
+      text-shadow:
+        0 0 10px #FFC700,
+        0 0 20px #ff69b4;
+      user-select: none;
+      line-height: 1.1em;
+    }
+
+    p {
+      font-size: 1.3em;
+      line-height: 2em;
+      margin: 1em auto;
+      max-width: 850px;
+      text-shadow: 
+        0 0 3px #ff69b4aa,
+        0 0 5px #FFC700cc;
+      white-space: pre-line;
+      text-align: center;
+    }
+
+    p strong {
+      color: #ff69b4;
+      text-shadow: 0 0 8px #ff69b4aa;
+    }
+
+    /* Floating emojis container */
+    .emoji-falling {
+      position: fixed;
+      font-size: 28px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 5;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.7));
+      animation-timing-function: linear;
+      will-change: transform, opacity;
+      transform-origin: center center;
+    }
+
+    /* Animations for falling emojis */
+    @keyframes fallRotateClockwise {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fallRotateCounter {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(-360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Signature text */
+    .firma {
+      position: fixed;
+      bottom: 12px;
+      right: 20px;
+      font-size: 1.2em;
+      font-weight: 600;
+      font-style: italic;
+      color: #ff69b4cc;
+      text-shadow:
+        0 0 4px #ff69b4aa;
+      user-select: none;
+      z-index: 20;
+      pointer-events: none;
+      font-family: 'Times New Roman', serif;
+    }
+  </style>
+</head>
+<body>
+  <audio id="background-music" controls autoplay loop>
+    <source src="i_wanna_be_yours.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <div class="carta" role="document" aria-label="Carta para Ivanna" tabindex="0">
+    <h1>Para Ivanna</h1>
+    <p><strong>Amor,<br>pureza,<br>¿o acaso un destino tejido por los hilos del universo?</strong></p>
+
+    <p>No creía en el amor a primera vista…<br>
+    hasta que tus ojos se cruzaron con los míos<br>
+    y en silencio me gritaron que algo en mí<br>
+    cambiaría para siempre.</p>
+
+    <p>Desde que llegaste, una brisa nueva comenzó a habitarme,<br>
+    una ternura que no supe explicar…<br>
+    y con cada día, ese afecto creció hasta volverse<br>
+    canción, pensamiento, necesidad.</p>
+
+    <p>Hoy, te quiero sin pedir permiso,<br>
+    de manera espontánea, desnuda, sin disfraces.<br>
+    Decidí amarte con el alma abierta<br>
+    y las manos temblando de verdad.</p>
+
+    <p>Eres esa persona que no sabía que necesitaba<br>
+    y que ahora no quiero perder jamás.<br>
+    Gracias por mostrarme que incluso<br>
+    el corazón más cansado puede volver a latir.</p>
+
+    <p>Quiero estar contigo<br>
+    en tus días de sol y en tus tormentas,<br>
+    en tus risas y en tus lágrimas.<br>
+    Verte con el alma desnuda,<br>
+    sin miedo, sin filtros, sin pretensiones.</p>
+
+    <p>Quiero que lo nuestro sea inspiración,<br>
+    una historia que pruebe que el amor verdadero aún existe,<br>
+    tan puro como un cielo sin nubes,<br>
+    tan vasto como el universo,<br>
+    tan eterno como el tiempo que no se detiene.</p>
+
+    <p>Déjame nombrar tu belleza con mis versos,<br>
+    cuidarte con mis manos,<br>
+    sanarte con mi presencia.<br>
+    Ser ese abrazo donde el mundo se detiene.</p>
+
+    <p>No soy perfecto, lo sé.<br>
+    Quizás no soy lo que soñaste,<br>
+    pero quiero ser el hombre que ames hoy, mañana… y siempre.<br>
+    Tu risa inesperada. Tu calma cuando todo duele.<br>
+    Tu pilar cuando el mundo parezca caerse.</p>
+
+    <p>Y cuando todo falle…<br>
+    quiero estar ahí, tomarte de la mano y decir:<br>
+    “Tranquila, todo estará bien. No estás sola,<br>
+    porque mientras respire… estaré contigo.”</p>
+
+    <p>Desde que llegaste, algo en mí floreció.<br>
+    Has sido mi motor, mi luz.<br>
+    Y aunque no imaginé amar así…<br>
+    ahora no puedo evitarlo.</p>
+
+    <p>Entre nosotros hay amistad, sí…<br>
+    pero también hay una química que vibra,<br>
+    que me enciende, que me llama a ti con el alma entera.<br>
+    Me conoces como nadie. Escuchas mis silencios.<br>
+    Y en ti, encontré la paz que tanto busqué.</p>
+
+    <p>"Te amo de una manera tan bonita y sincera<br>
+    que no hace falta verte ni tocarte<br>
+    para saber que mi amor es puro como un río cristalino.<br>
+    ¿Que cómo lo sé?<br>
+    Solo basta cerrar los ojos<br>
+    e imaginar que serás mi amor para toda la vida..."</p>
+
+    <p>Si tuviera que describirte…<br>
+    diría que eres fuego y dulzura,<br>
+    risa y fortaleza,<br>
+    una atracción que me enloquece<br>
+    y un corazón que me inspira a ser mejor.</p>
+
+    <p>Me enamoré de ti sabiendo que no sería fácil,<br>
+    pero aún así, te elegiría mil veces más.<br>
+    Quiero cuidarte,<br>
+    amarte como nadie lo ha hecho,<br>
+    y verte brillar desde adentro.</p>
+
+    <p>Porque tu belleza no es solo de piel,<br>
+    es esa luz que emanas cuando sonríes,<br>
+    la que hace que el tiempo se detenga cuando entras.</p>
+
+    <p>Tal vez no fue casualidad haberte conocido aquel día…<br>
+    pero no me arrepiento.<br>
+    Me enamoré de ese cabello color café<br>
+    con un aroma que aún recuerdo.<br>
+    Jamás pensé tomar un café contigo<br>
+    ni tener un amor tan puro como el nuestro.<br>
+    Quizás debamos encontrarnos en otra vida<br>
+    para estar juntos por siempre…<br>
+    porque estamos unidos por el hilo rojo.<br>
+    Ni la distancia ni otro amor romperán esta conexión.<br>
+    Tú eres mi universo, mi luz,<br>
+    y si estamos juntos… brillaré toda la eternidad.</p>
+
+    <p>No necesito un amor perfecto…<br>
+    solo uno real.<br>
+    Y contigo, lo encontré.</p>
+
+    <p>Mírame…<br>
+    aquí estoy, amando sin medida,<br>
+    escribiendo futuros,<br>
+    perdiéndome en tus galaxias cada vez que te pienso.</p>
+
+    <p>Mis palabras quizás no basten,<br>
+    pero son un puente hacia lo que siento:<br>
+    un amor tan grande como el universo.</p>
+
+    <p>Y si alguna vez me preguntas por qué te amo…<br>
+    te diré, sin dudar:<br>
+    “No sabría cómo no hacerlo.”</p>
+  </div>
+  
+  <div class="firma" aria-label="firma con amor eterno para ti">
+    Con amor eterno para ti
+  </div>
+
+  <script>
+    const flores = ['🌸','🌷','🌹','🌺','🌻','💐','🌼']; // flores emoji
+    const besos = ['😘','😚','😗','😍']; // emojis de besos suaves y amorosos
+    const corazones = ['❤️','💖','💛','💚','💙','💜','🧡','💗','💕','❣️']; // corazones excluyendo negro, blanco y roto
+    
+    const lluviaEmoji = flores.concat(besos, corazones);
+
+    function crearElementoEmoji() {
+      const el = document.createElement('div');
+      el.classList.add('emoji-falling');
+      el.textContent = lluviaEmoji[Math.floor(Math.random() * lluviaEmoji.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = '-50px';
+      const anim = Math.random() > 0.5 ? 'fallRotateClockwise' : 'fallRotateCounter';
+      el.style.animationName = anim;
+      el.style.animationDuration = (Math.random() * 5 + 7) + 's';
+      el.style.fontSize = (Math.random() * 10 + 24) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => {
+        if (el.parentNode) {
+          el.parentNode.removeChild(el);
+        }
+      }, 12000);
+    }
+
+    setInterval(crearElementoEmoji, 600);
+  </script>
+</body>
+</html>
